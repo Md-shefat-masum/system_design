@@ -137,4 +137,21 @@
             </div>
         </div>
     </body>
+    <script>
+
+        window.cookieStore.get('AXRF-TOKEN')
+            .then(cookie=>{
+                console.log('token set');
+                let token = `Bearer ${cookie.value}`;
+
+                fetch("/api/user",{
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": token,
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                })
+            })
+    </script>
 </html>
